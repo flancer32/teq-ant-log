@@ -12,6 +12,11 @@ const NS = 'Fl32_Log_Shared_Dto_Log';
 class Dto {
     static namespace = NS;
     /**
+     * Backend ID for the log entry.
+     * @type {number}
+     */
+    bid;
+    /**
      * UTC date-time.
      * @type {Date}
      */
@@ -59,6 +64,7 @@ export default class Fl32_Log_Shared_Dto_Log {
             // create new DTO
             const res = new Dto();
             // cast known attributes
+            res.bid = castInt(data?.bid);
             res.date = castDate(data?.date);
             res.instance = castString(data?.instance);
             res.level = castInt(data?.level);
