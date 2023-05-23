@@ -40,6 +40,11 @@ class Dto {
      * @type {string}
      */
     source;
+    /**
+     * Log source type (see Fl32_Log_Shared_Enum_Log_Type)
+     * @type {string}
+     */
+    type;
 }
 
 /**
@@ -48,12 +53,18 @@ class Dto {
 export default class Fl32_Log_Shared_Dto_Log {
 
     constructor(spec) {
-        /** @type {TeqFw_Core_Shared_Util_Cast.castInt|function} */
-        const castInt = spec['TeqFw_Core_Shared_Util_Cast.castInt'];
         /** @type {TeqFw_Core_Shared_Util_Cast.castDate|function} */
         const castDate = spec['TeqFw_Core_Shared_Util_Cast.castDate'];
+        /** @type {TeqFw_Core_Shared_Util_Cast.castEnum|function} */
+        const castEnum = spec['TeqFw_Core_Shared_Util_Cast.castEnum'];
+        /** @type {TeqFw_Core_Shared_Util_Cast.castInt|function} */
+        const castInt = spec['TeqFw_Core_Shared_Util_Cast.castInt'];
         /** @type {TeqFw_Core_Shared_Util_Cast.castString|function} */
         const castString = spec['TeqFw_Core_Shared_Util_Cast.castString'];
+        /** @type {typeof Fl32_Log_Shared_Enum_Log_Level} */
+        const LEVEL = spec['Fl32_Log_Shared_Enum_Log_Level$'];
+        /** @type {typeof Fl32_Log_Shared_Enum_Log_Type} */
+        const TYPE = spec['Fl32_Log_Shared_Enum_Log_Type$'];
 
         // INSTANCE METHODS
         /**
@@ -67,10 +78,11 @@ export default class Fl32_Log_Shared_Dto_Log {
             res.bid = castInt(data?.bid);
             res.date = castDate(data?.date);
             res.instance = castString(data?.instance);
-            res.level = castInt(data?.level);
+            res.level = castEnum(data?.level, LEVEL);
             res.message = castString(data?.message);
             res.meta = structuredClone(data?.meta);
             res.source = castString(data?.source);
+            res.type = castEnum(data?.type, TYPE);
             return res;
         };
     }

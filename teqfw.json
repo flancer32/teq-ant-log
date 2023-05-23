@@ -3,6 +3,11 @@
     "autoload": {
       "ns": "Fl32_Log",
       "path": "./src"
+    },
+    "replace": {
+      "TeqFw_Core_Shared_Api_Logger_Transport": {
+        "front": "Fl32_Log_Front_Logger_Transport"
+      }
     }
   }
 }
