@@ -5,6 +5,22 @@
 // MODULE'S VARS
 const NS = 'Fl32_Log_Shared_Dto_Log';
 
+/**
+ * @memberOf Fl32_Log_Shared_Dto_Log
+ */
+const ATTR = {
+    BID: 'bid',
+    DATE: 'date',
+    INSTANCE: 'instance',
+    LEVEL: 'level',
+    MESSAGE: 'message',
+    META: 'meta',
+    SOURCE: 'source',
+    TYPE: 'type',
+};
+
+Object.freeze(ATTR);
+
 // MODULE'S CLASSES
 /**
  * @memberOf Fl32_Log_Shared_Dto_Log
@@ -26,7 +42,10 @@ class Dto {
      * @type {string}
      */
     instance;
-    /** @type {number} */
+    /**
+     * Log event level (see Fl32_Log_Shared_Enum_Log_Level)
+     * @type {string}
+     */
     level;
     /** @type {string} */
     message;
@@ -41,14 +60,14 @@ class Dto {
      */
     source;
     /**
-     * Log source type (see Fl32_Log_Shared_Enum_Log_Type)
+     * Log event type (see Fl32_Log_Shared_Enum_Log_Type)
      * @type {string}
      */
     type;
 }
 
 /**
- * @implements TeqFw_Core_Shared_Api_Factory_Dto
+ * @implements TeqFw_Core_Shared_Api_Factory_Dto_Meta
  */
 export default class Fl32_Log_Shared_Dto_Log {
 
@@ -85,6 +104,11 @@ export default class Fl32_Log_Shared_Dto_Log {
             res.type = castEnum(data?.type, TYPE);
             return res;
         };
+
+        /**
+         * @return {typeof Fl32_Log_Shared_Dto_Log.ATTR}
+         */
+        this.getAttributes = () => ATTR;
     }
 
 }
