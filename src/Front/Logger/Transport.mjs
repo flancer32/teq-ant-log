@@ -40,11 +40,10 @@ export default class Fl32_Log_Front_Logger_Transport {
                         // init aggregator specific properties
                         entry.instance = instance.getUuid();
                         entry.level = (dto.isError) ? LEVEL.ERROR : LEVEL.INFO;
-                        entry.meta = entry.meta ?? {};
-                        entry.meta['type'] = entry.meta['type'] ?? TYPE.FRONT;
+                        entry.type = TYPE.FRONT;
                         // send log entry to logs monitor
                         const postData = JSON.stringify(entry);
-                        navigator.sendBeacon(BASE, JSON.stringify(postData));
+                        navigator.sendBeacon(BASE, postData);
                     } else this.disableLogs();
                 } catch (e) {
                     _canSendLogs = false;
