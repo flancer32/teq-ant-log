@@ -22,7 +22,7 @@ export default class Fl32_Log_Front_Logger_Transport {
         // VARS
         const STORE_KEY = `${DEF.SHARED.NAME}/front/log/monitor`;
         let BASE;
-        let _canSendLogs;
+        let _canSendLogs = ('true' === window.localStorage.getItem(STORE_KEY));
 
         // MAIN
 
@@ -54,11 +54,12 @@ export default class Fl32_Log_Front_Logger_Transport {
 
         /**
          * Enable logs transporting to remote aggregator.
-         * @param {string} domain - URL of the remote aggregator (logs.domain.com)
+         * @param {string} domain - domain of the logs aggregator ('logs.domain.com' or 'http(s)://...')
          */
         this.enableLogs = function (domain) {
             if (domain) {
-                BASE = `//${domain}/${DEF.SHARED.SPACE_BEACON}/`;
+                BASE = `${domain}/${DEF.SHARED.SPACE_BEACON}/`;
+                if (!BASE.includes('://')) BASE = `//${{BASE}}`;
                 _canSendLogs = true;
                 window.localStorage.setItem(STORE_KEY, _canSendLogs);
             } else this.disableLogs();
