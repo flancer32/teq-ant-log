@@ -47,6 +47,8 @@ export default class Fl32_Log_Front_Logger_Transport {
                     } else this.disableLogs();
                 } catch (e) {
                     _canSendLogs = false;
+                    console.error(`Cannot send log entry to remote aggregator (${BASE}). Remote logging is disabled.`);
+                    console.error(e);
                 }
             // duplicate to console
             transConsole.log(dto);
@@ -59,7 +61,7 @@ export default class Fl32_Log_Front_Logger_Transport {
         this.enableLogs = function (domain) {
             if (domain) {
                 BASE = `${domain}/${DEF.SHARED.SPACE_BEACON}/`;
-                if (!BASE.includes('://')) BASE = `//${{BASE}}`;
+                if (!BASE.includes('://')) BASE = `//${BASE}`;
                 _canSendLogs = true;
                 window.localStorage.setItem(STORE_KEY, _canSendLogs);
             } else this.disableLogs();
