@@ -9,15 +9,18 @@ Base plugin for utilizing log aggregation in TeqFW apps.
  * @implements TeqFw_Web_Front_Api_IApp
  */
 export default class Demo_Front_App {
-    constructor(spec) {
-        // DEPS
-        /** @type {TeqFw_Web_Front_Mod_Config} */
-        const modCfg = spec['TeqFw_Web_Front_Mod_Config$'];
-        /** @type {Fl32_Log_Front_Logger_Transport} */
-        const modLogTrn = spec['TeqFw_Core_Shared_Api_Logger_Transport$']; // as interface
-        /** @type {TeqFw_Core_Shared_Logger_Base} */
-        const loggerBase = spec['TeqFw_Core_Shared_Logger_Base$'];
-
+    /**
+     * @param {TeqFw_Web_Front_Mod_Config} modCfg
+     * @param {Fl32_Log_Front_Logger_Transport} modLogTrn - inject as interface
+     * @param {TeqFw_Core_Shared_Logger_Base} loggerBase
+     */
+    constructor(
+        {
+            TeqFw_Web_Front_Mod_Config$: modCfg,
+            TeqFw_Core_Shared_Api_Logger_Transport$: modLogTrn,
+            TeqFw_Core_Shared_Logger_Base$: loggerBase,
+        }
+    ) {
         // INSTANCE METHODS
         this.init = async function (fnPrintout) {
             // FUNCS
