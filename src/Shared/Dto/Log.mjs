@@ -70,21 +70,24 @@ class Dto {
  * @implements TeqFw_Core_Shared_Api_Factory_Dto_Meta
  */
 export default class Fl32_Log_Shared_Dto_Log {
+    /**
+     * @param {TeqFw_Core_Shared_Util_Cast.castDate|function} castDate
+     * @param {TeqFw_Core_Shared_Util_Cast.castEnum|function} castEnum
+     * @param {TeqFw_Core_Shared_Util_Cast.castInt|function} castInt
+     * @param {TeqFw_Core_Shared_Util_Cast.castString|function} castString
+     * @param {typeof Fl32_Log_Shared_Enum_Log_Level} LEVEL
+     * @param {typeof Fl32_Log_Shared_Enum_Log_Type} TYPE
+     */
 
-    constructor(spec) {
-        /** @type {TeqFw_Core_Shared_Util_Cast.castDate|function} */
-        const castDate = spec['TeqFw_Core_Shared_Util_Cast.castDate'];
-        /** @type {TeqFw_Core_Shared_Util_Cast.castEnum|function} */
-        const castEnum = spec['TeqFw_Core_Shared_Util_Cast.castEnum'];
-        /** @type {TeqFw_Core_Shared_Util_Cast.castInt|function} */
-        const castInt = spec['TeqFw_Core_Shared_Util_Cast.castInt'];
-        /** @type {TeqFw_Core_Shared_Util_Cast.castString|function} */
-        const castString = spec['TeqFw_Core_Shared_Util_Cast.castString'];
-        /** @type {typeof Fl32_Log_Shared_Enum_Log_Level} */
-        const LEVEL = spec['Fl32_Log_Shared_Enum_Log_Level$'];
-        /** @type {typeof Fl32_Log_Shared_Enum_Log_Type} */
-        const TYPE = spec['Fl32_Log_Shared_Enum_Log_Type$'];
-
+    constructor(
+        {
+            'TeqFw_Core_Shared_Util_Cast.castDate': castDate,
+            'TeqFw_Core_Shared_Util_Cast.castEnum': castEnum,
+            'TeqFw_Core_Shared_Util_Cast.castInt': castInt,
+            'TeqFw_Core_Shared_Util_Cast.castString': castString,
+            Fl32_Log_Shared_Enum_Log_Level$: LEVEL,
+            Fl32_Log_Shared_Enum_Log_Type$: TYPE,
+        }) {
         // INSTANCE METHODS
         /**
          * @param {Fl32_Log_Shared_Dto_Log.Dto} data

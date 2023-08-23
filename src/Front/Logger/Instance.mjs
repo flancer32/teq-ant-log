@@ -3,11 +3,13 @@
  * The model saves data in the browser's Session Storage (a session is a tab in a browser).
  */
 export default class Fl32_Log_Front_Logger_Instance {
-    constructor(spec) {
-        // DEPS
-        /** @type {Fl32_Log_Front_Defaults} */
-        const DEF = spec['Fl32_Log_Front_Defaults$'];
-
+    /**
+     * @param {Fl32_Log_Front_Defaults} DEF
+     */
+    constructor(
+        {
+            Fl32_Log_Front_Defaults$: DEF,
+        }) {
         // VARS
         const KEY = `${DEF.SHARED.NAME}/instance`;
         /** @type {string} */

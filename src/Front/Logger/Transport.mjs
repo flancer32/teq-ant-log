@@ -4,21 +4,23 @@
  * @implements TeqFw_Core_Shared_Api_Logger_Transport
  */
 export default class Fl32_Log_Front_Logger_Transport {
-    constructor(spec) {
-        // DEPS
-        /** @type {Fl32_Log_Front_Defaults} */
-        const DEF = spec['Fl32_Log_Front_Defaults$'];
-        /** @type {TeqFw_Core_Shared_Logger_Transport_Console} */
-        const transConsole = spec['TeqFw_Core_Shared_Logger_Transport_Console$'];
-        /** @type {Fl32_Log_Shared_Dto_Log} */
-        const dtoLog = spec['Fl32_Log_Shared_Dto_Log$'];
-        /** @type {Fl32_Log_Front_Logger_Instance} */
-        const instance = spec['Fl32_Log_Front_Logger_Instance$'];
-        /** @type {typeof Fl32_Log_Shared_Enum_Log_Level} */
-        const LEVEL = spec['Fl32_Log_Shared_Enum_Log_Level$'];
-        /** @type {typeof Fl32_Log_Shared_Enum_Log_Type} */
-        const TYPE = spec['Fl32_Log_Shared_Enum_Log_Type$'];
-
+    /**
+     * @param {Fl32_Log_Front_Defaults} DEF
+     * @param {TeqFw_Core_Shared_Logger_Transport_Console} transConsole
+     * @param {Fl32_Log_Shared_Dto_Log} dtoLog
+     * @param {Fl32_Log_Front_Logger_Instance} instance
+     * @param {typeof Fl32_Log_Shared_Enum_Log_Level} LEVEL
+     * @param {typeof Fl32_Log_Shared_Enum_Log_Type} TYPE
+     */
+    constructor(
+        {
+            Fl32_Log_Front_Defaults$: DEF,
+            TeqFw_Core_Shared_Logger_Transport_Console$: transConsole,
+            Fl32_Log_Shared_Dto_Log$: dtoLog,
+            Fl32_Log_Front_Logger_Instance$: instance,
+            Fl32_Log_Shared_Enum_Log_Level$: LEVEL,
+            Fl32_Log_Shared_Enum_Log_Type$: TYPE,
+        }) {
         // VARS
         const STORE_KEY = `${DEF.SHARED.NAME}/front/log/monitor`;
         let BASE;
